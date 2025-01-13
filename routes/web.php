@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\SettingController;
 
 
 Route::get('/', function () {
@@ -20,4 +20,8 @@ Route::prefix('categories')->group(function () {
     Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::post('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
+});
+Route::prefix('settings')->group(function () {
+    Route::get('/edit', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::post('/update', [SettingController::class, 'update'])->name('settings.update');
 });
