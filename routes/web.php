@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -23,7 +24,14 @@ Route::prefix('categories')->group(function () {
     Route::post('/update/{id}', [CategoryController::class, 'update'])->name('categories.update');
     Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
 })->middleware('auth');
+
 Route::prefix('settings')->group(function () {
     Route::get('/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::post('/update', [SettingController::class, 'update'])->name('settings.update');
+})->middleware('auth');
+
+Route::prefix('car')->group(function () {
+    Route::get('/', [AdminCarController::class, 'index'])->name('car.index');
+    Route::get('/create', [AdminCarController::class, 'create'])->name('car.create');
+    Route::post('/store', [AdminCarController::class, 'store'])->name('car.store');
 })->middleware('auth');

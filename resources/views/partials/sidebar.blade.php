@@ -43,6 +43,15 @@
             </a>
           </li>
        
+          <li class="nav-item">
+            <a href="{{route('car.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Quan ly xe
+                
+              </p>
+            </a>
+          </li>
        
          
    
