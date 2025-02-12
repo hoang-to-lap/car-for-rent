@@ -34,4 +34,7 @@ Route::prefix('car')->group(function () {
     Route::get('/', [AdminCarController::class, 'index'])->name('car.index');
     Route::get('/create', [AdminCarController::class, 'create'])->name('car.create');
     Route::post('/store', [AdminCarController::class, 'store'])->name('car.store');
+    Route::get('/delete/{id}', [AdminCarController::class, 'delete'])->name('car.delete');
+    Route::get('/edit/{id}', [AdminCarController::class, 'edit'])->name('car.edit');
+    Route::post('/update/{id}', [AdminCarController::class, 'update'])->name('car.update');
 })->middleware('auth');

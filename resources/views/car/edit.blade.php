@@ -12,11 +12,11 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-  @include('partials.content-header' , ['name' => 'Car' , 'key' => 'ADD'])
+  @include('partials.content-header' , ['name' => 'Car' , 'key' => 'Edit'])
     <!-- /.content-header -->
     <div class="col-md-12">
       
-    <form action="{{route('car.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('car.update' , ['id' => $car->id])}}" method="post" enctype="multipart/form-data">
       @csrf
 
    
@@ -24,7 +24,7 @@
     <label >Tên  xe</label>
     <input type="input" class="form-control" 
     name="name"
-    placeholder="Nhập tên xe" >
+    placeholder="Nhập tên xe"  value="{{$car->name}}">
      @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
@@ -43,7 +43,7 @@
     <label >Giá thuê xe theo ngày</label>
     <input type="input" class="form-control" 
     name="price_ngay"
-    placeholder="Nhập giá"  >
+    placeholder="Nhập giá" value="{{$car->price_ngay}} ">
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
@@ -52,14 +52,14 @@
     <label >Giá thuê xe theo tháng</label>
     <input type="input" class="form-control" 
     name="price_thang"
-    placeholder="Nhập giá">
+    placeholder="Nhập giá" value="{{$car->price_thang}}">
   
   </div>
   <div class="form-group">
     <label >Giá thuê xe theo năm</label>
     <input type="input" class="form-control" 
     name="price_nam"
-    placeholder="Nhập giá">
+    placeholder="Nhập giá" value="{{$car->price_nam}}">
    
   </div>
   <div class="form-group">
@@ -70,6 +70,11 @@
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
+  </div>
+  <div class="col-md-12">
+    <div class="row">
+        <img src="{{$car->feature_image_path}}" alt="" style="width: 300px; height: 250px; object-fit: cover; border-radius: 8px;">
+    </div>
   </div>
   <div class="form-group">
     <label >Ảnh chi tiết</label>
@@ -82,11 +87,20 @@
         <small class="text-danger">{{ $message }}</small>
     @enderror
   </div>
+  <div class="clo-md-12">
+    <div class="row">
+        @foreach($car -> carImages  as $carIamgeItem)
+        <div class="col-md-3">
+            <img src="{{$carIamgeItem -> image_path}}" alt="" srcset="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
+        </div>
+        @endforeach
+    </div>
+  </div>
   <div class="form-group">
     <label >Năm sản xuất</label>
     <input type="input" class="form-control" 
     name="year"
-    placeholder="Năm sản xuất">
+    placeholder="Năm sản xuất" value="{{$car->year}}">
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
@@ -95,7 +109,7 @@
     <label >Chỗ ngồi</label>
     <input type="input" class="form-control" 
     name="seat"
-    placeholder="Nhập số ghê ngồi">
+    placeholder="Nhập số ghê ngồi" value="{{$car->seat}}">
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
@@ -104,7 +118,7 @@
     <label >Số Km xe đã chạy</label>
     <input type="input" class="form-control" 
     name="odo"
-    placeholder="Nhập số km">
+    placeholder="Nhập số km" value="{{$car->odo}}">
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
@@ -112,14 +126,14 @@
   
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Content</label>
-    <textarea class="my-editor" id="my-editor" name="content" rows="5"></textarea>
+    <textarea class="my-editor" id="my-editor" name="content" rows="5"> {{$car->content}}</textarea>
     @error('name')
         <small class="text-danger">{{ $message }}</small>
     @enderror
   </div>
   
   <div class="form-group">
-    <label >Chọn danh mục cha</label>
+    <label >Chọn danh mục </label>
     <select class="form-control" name ="category_id">
       <option value="0">Chọn danh mục </option>
      {!!$htmlOption!!}
