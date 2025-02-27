@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminNewsCategoryController;
+use App\Http\Controllers\AdminNewsController;
+use App\Http\Controllers\AdminSliderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SettingController;
@@ -37,4 +40,36 @@ Route::prefix('car')->group(function () {
     Route::get('/delete/{id}', [AdminCarController::class, 'delete'])->name('car.delete');
     Route::get('/edit/{id}', [AdminCarController::class, 'edit'])->name('car.edit');
     Route::post('/update/{id}', [AdminCarController::class, 'update'])->name('car.update');
+})->middleware('auth');
+
+Route::prefix('slider')->group(function () {
+    Route::get('/', [AdminSliderController::class, 'index'])->name('slider.index');
+    Route::get('/create', [AdminSliderController::class, 'create'])->name('slider.create');
+    Route::post('/store', [AdminSliderController::class, 'store'])->name('slider.store');
+    Route::get('/delete/{id}', [AdminSliderController::class, 'delete'])->name('slider.delete');
+    Route::get('/edit/{id}', [AdminSliderController::class, 'edit'])->name('slider.edit');
+    Route::post('/update/{id}', [AdminSliderController::class, 'update'])->name('slider.update');
+    
+})->middleware('auth');
+
+
+Route::prefix('newscategory')->group(function () {
+    Route::get('/', [AdminNewsCategoryController::class, 'index'])->name('newscategory.index');
+    Route::get('/create', [AdminNewsCategoryController::class, 'create'])->name('newscategory.create');
+    Route::post('/store', [AdminNewsCategoryController::class, 'store'])->name('newscategory.store');
+    Route::get('/delete/{id}', [AdminNewsCategoryController::class, 'delete'])->name('newscategory.delete');
+    Route::get('/edit/{id}', [AdminNewsCategoryController::class, 'edit'])->name('newscategory.edit');
+    Route::post('/update/{id}', [AdminNewsCategoryController::class, 'update'])->name('newscategory.update');
+    
+})->middleware('auth');
+
+
+Route::prefix('news')->group(function () {
+    Route::get('/', [AdminNewsController::class, 'index'])->name('news.index');
+    Route::get('/create', [AdminNewsController::class, 'create'])->name('news.create');
+    Route::post('/store', [AdminNewsController::class, 'store'])->name('news.store');
+    Route::get('/delete/{id}', [AdminNewsController::class, 'delete'])->name('news.delete');
+    Route::get('/edit/{id}', [AdminNewsController::class, 'edit'])->name('news.edit');
+    Route::post('/update/{id}', [AdminNewsController::class, 'update'])->name('news.update');
+    
 })->middleware('auth');

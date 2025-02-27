@@ -28,7 +28,7 @@
             <a href="{{route('categories.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Danh muc xe
+                Danh Mục Xe
           
               </p>
             </a>
@@ -47,12 +47,31 @@
             <a href="{{route('car.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-               Quan ly xe
+               Quản Lý Xe
+                
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('slider.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Quản Lý Slide
                 
               </p>
             </a>
           </li>
        
+          <li class="nav-item">
+            <a href="{{route('newscategory.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Danh mục tin tức
+                
+              </p>
+            </a>
+          </li>
          
    
          
