@@ -72,7 +72,15 @@
               </p>
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{route('news.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Tin tức
+                
+              </p>
+            </a>
+          </li>
    
          
           

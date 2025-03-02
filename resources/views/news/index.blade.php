@@ -30,6 +30,7 @@
       <th scope="col">Tiêu đề</th>
       
       <th scope="col">Hình ảnh</th>
+      <th scope="col">Danh mục</th>
       <th scope="col">Action</th>
     
     </tr>
@@ -41,13 +42,15 @@
       <td>{{$new->title}}</td>
      
       <td><img src="{{$new->image_path}}" alt="" srcset="" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;"></td>
+      <td>{{$new->category->name}}</td>
       <td>
       <a class="btn btn-danger " href="{{ route('news.edit', ['id' => $new->id]) }}">
         Sửa
     </a>
-        <button class="btn btn-danger btn-delete" data-url="{{ route('new.delete', ['id' => $new->id]) }}">
+    <button class="btn btn-danger btn-delete" data-url="{{ route('news.delete', ['id' => $new -> id]) }}">
         Xóa
     </button>
+   
       </td>
    
     </tr>
