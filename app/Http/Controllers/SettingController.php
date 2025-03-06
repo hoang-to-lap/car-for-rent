@@ -23,6 +23,8 @@ class SettingController extends Controller
         'address'   => 'required|string|max:255',
         'phone'     => 'required|string|max:20',
         'email'     => 'required|email|max:255',
+        'content' => 'required|string',
+        'company_info' => 'required|string',
     ]);
 
     $setting = Setting::first();
@@ -31,6 +33,8 @@ class SettingController extends Controller
         'address'   => $request->address,
         'phone'     => $request->phone,
         'email'     => $request->email,
+        'content' => $request->content,         
+        'company_info' => $request->company_info 
     ]);
 
     return redirect()->back()->with('success', 'Cập nhật thành công!');

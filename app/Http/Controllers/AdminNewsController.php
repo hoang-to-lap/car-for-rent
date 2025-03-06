@@ -84,4 +84,51 @@ public function delete($id)
     }            
 
 }
+public function edit($id){
+    $news = $this->news->find($id);
+    $newscategories = NewsCategory::all(); // 
+    return view('news.edit', compact('newscategories' , 'news'));
+}
+public function update(Request $request, $id)
+{
+  
+    try {
+        DB::beginTransaction();
+
+        // Lấy bản ghi cần update
+        $news = $this->news->find($id);
+
+        if (!$news) {
+            return redirect()->back()->with('error', 'Không tìm thấy tin tức.');
+        }
+
+        $dataUpdate = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'content' => $request->content,
+            'id_categorynews' => $request->id_categorynews,
+        ];
+
+   
+        if ($request->hasFile('image_path')) {
+            $dataUploadImage = $this->storageTraitUpload($request, 'image_path', 'news');
+            if (!empty($dataUploadImage)) {
+                $dataUpdate['image_name'] = $dataUploadImage['file_name'];
+                $dataUpdate['image_path'] = $dataUploadImage['file_path'];
+            }
+        }
+
+        // Cập nhật dữ liệu
+        $news->update($dataUpdate);
+
+        DB::commit();
+
+        session()->flash('success', 'Cập nhật tin tức thành công');
+        return redirect()->route('news.index');
+    } catch (\Exception $exception) {
+        DB::rollBack();
+        Log::error("Error: " . $exception->getMessage() . ' Line: ' . $exception->getLine());
+        return redirect()->back()->with('error', 'Có lỗi xảy ra, vui lòng thử lại sau.');
+    }
+}
 }
