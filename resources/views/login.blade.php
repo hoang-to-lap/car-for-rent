@@ -176,8 +176,7 @@ button{
 
         <button type="submit" name="submit">Log In</button>
         <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+          
         </div>
     </form>
 </body>

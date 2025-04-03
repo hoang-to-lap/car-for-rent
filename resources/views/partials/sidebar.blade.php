@@ -82,7 +82,15 @@
             </a>
           </li>
    
-         
+          <li class="nav-item">
+            <a href="{{route('bookings.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Quản lý khách hàng
+                
+              </p>
+            </a>
+          </li>
           
         </ul>
       </nav>

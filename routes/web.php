@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBookingController;
 use App\Http\Controllers\AdminCarController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminNewsCategoryController;
@@ -135,6 +136,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/edit/{id}', [AdminNewsController::class, 'edit'])->name('news.edit');
         Route::post('/update/{id}', [AdminNewsController::class, 'update'])->name('news.update');
         Route::get('/delete/{id}', [AdminNewsController::class, 'delete'])->name('news.delete');
+    });
+
+    Route::prefix('bookings')->group(function () {
+        Route::get('bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
+    Route::post('bookings/update-status/{id}', [AdminBookingController::class, 'updateStatus'])->name('bookings.update-status');
     });
 
 });

@@ -22,7 +22,7 @@ class AdminNewsController extends Controller
 }
 public function index()
 {
-    $news = News::latest()->paginate(10);
+    $news = News::latest()->paginate(5);
     return view('news.index', compact('news'));
 }
 public function create()
